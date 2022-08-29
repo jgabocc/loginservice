@@ -1,5 +1,5 @@
 const SRV = require('./app');
-port = SRV.port === 0 ? process.env.PORT :  SRV.port;
+port =process.env.PORT || SRV.port;
 const mongoose = require("mongoose");
 
 
