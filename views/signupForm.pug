@@ -1,0 +1,36 @@
+doctype html
+// Created By CodingLab - www.codinglabweb.com
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  // <title>Login Form | CodingLab</title>
+  link(rel='stylesheet' href='/login.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css')
+  script(
+ src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous")
+body
+  .container
+    .wrapper
+      .title
+        span SignUp Form
+      form
+        .row
+          i.fas.fa-user
+          input(type='text' placeholder='Name' required='')
+        .row
+          i.fas.fa-user
+          input(type='text' placeholder='Last Name' required='')
+        .row
+          i.fas.fa-at
+          input(type='text' placeholder='Email' required='')
+        .row
+          i.fas.fa-lock
+          input(type='password' placeholder='Password' required='')
+        .row
+          i.fas.fa-lock
+          input(type='password' placeholder='Confirm Password' required='')
+        .row.button
+          button(id="Submit" class='disabled') SignUp
+    script(src="/signup.js") 

@@ -1,0 +1,1 @@
+{"settings":[{"name":"Service","value":"true"},{"name":"OpenChrome","value":"false"},{"name":"Testing","value":"false"}],"dataSettings":[{"name":"URL","value":"http://localhost"},{"name":"PORT","value":"4000"},{"name":"roles","value":["SuperAdmin","Admin","User"]}]}
