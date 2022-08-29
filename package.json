@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "debug": "node server.js"
+    "debug": "node server.js",
+    "start": "node server.js"
   },
   "author": "Jose Carrero",
   "license": "ISC",
