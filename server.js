@@ -1,8 +1,9 @@
 const SRV = require('./app');
+port = SRV.port === 0 ? process.env.PORT :  SRV.port;
 const mongoose = require("mongoose");
 
 
-const server = SRV.app.listen(SRV.port, ()=>{
+const server = SRV.app.listen(port, ()=>{
     console.info(`The Service Is ${SRV.ServiceStatus? 'ON':'OFF'}`)
     console.info(`${SRV.message}: ${server.address().port}`); 
     console.info(`Open chrome is set to: ${SRV.openChrome}`)
