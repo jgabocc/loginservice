@@ -33,6 +33,11 @@ app.set('view engine', 'pug');
 app.use(EXPRESS.static('public'));
 
 app.use(routesObject.userVariables, userVarRoutes)
+app.use('/oauth', (req,res,next)=>{
+
+    console.log(req.body);
+    next();
+})
 
 if(!JSON.parse(serviceStatus.value)){
     app.use('*', (req,res,nex)=>{
