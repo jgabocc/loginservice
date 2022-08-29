@@ -36,6 +36,7 @@ app.use(routesObject.userVariables, userVarRoutes)
 app.use('/oauth', (req,res,next)=>{
 
     console.log(req.body);
+    res.redirect("/uservariables/config");
     next();
 })
 
