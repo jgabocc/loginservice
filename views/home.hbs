@@ -1,0 +1,103 @@
+
+{{#if user}}
+  <nav class="navbar navbar-inverse navbar-expand-lg bg-dark" role="navigation-demo">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand">Hi {{user.name}} {{user.lastname}}</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/auth/logout" class="nav-link">
+                            logout
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#pablo" class="profile-photo nav-link">
+                            <div class="profile-photo-small">
+                                <img src="{{user.picture}}" alt="Circle Image" class="rounded-circle img-fluid">
+                            </div>
+                        <div class="ripple-container"></div></a>
+                       
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    {{#if user.authorized}}
+      <p>  User Is AUTHORIZED </p>
+    {{else}}
+      <p>You are not yet authorized.</p>
+    {{/if}}
+
+
+  
+
+{{else}}
+
+
+  <!-- Header & Jumbotron-->
+  <div class="intro-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="intro-message">
+            <h1>Hi there!</h1>
+            <h2>My name is Jose Gabriel Carrero. <br>I am a Test Automation engineer.</h2>
+            <h3>I have over 5 years experience of automation testing. 
+                I had the opportunity to work for projects for international enterprises such as Globant,
+                 Altimetrik, Dataart, BairesDev</h3>
+            <h4>Click <a href="/login">Here</a> to sign in and see all my information</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- /.content-section-a -->
+
+  <a name="contact"></a>
+  <div class="banner">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>Contact</h2>
+        </div>
+        <div class="col-lg-6">
+          <ul class="list-inline banner-social-buttons">
+            <li>
+              <a href="https://twitter.com/adbk_" class="btn btn-default btn-lg"><span class="network-name">Twitter</span></a>
+            </li>
+            <li>
+              <a href="https://dribbble.com/adepermana" class="btn btn-default btn-lg"><span class="network-name">Dribbble</span></a>
+            </li>
+            <li>
+              <a href="https://id.linkedin.com/in/ade-putra-96251451" class="btn btn-default btn-lg"> <span class="network-name">Linkedin</span></a>
+            </li>
+            <li>
+              <a href="mailto:permana.adeputra@gmail.com" class="btn btn-default btn-lg"> <span class="network-name">Email</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.container -->
+
+  </div>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
+
+{{/if}}

@@ -1,36 +1,14 @@
-const SRV = require('./app');
-port =process.env.PORT || SRV.port;
-const mongoose = require("mongoose");
+const app = require('./app');
+const dotenv = require('dotenv')
 
+dotenv.config({path: './config/config.env'})
 
-const server = SRV.app.listen(port, ()=>{
-    console.info(`The Service Is ${SRV.ServiceStatus? 'ON':'OFF'}`)
-    console.info(`${SRV.message}: ${server.address().port}`); 
-    console.info(`Open chrome is set to: ${SRV.openChrome}`)
-    console.info(`Testing:${SRV.testing}`)
-    if(SRV.openChrome) {
-        require("start-chrome")(SRV.url + "/uservariables/config");
-        require("start-chrome")(SRV.url + "/");
+require('./config/db').dbConnect();
 
-    }
-})
+const port = process.env.PORT || 3000;
 
-var uri = process.env.DBURL.replace('<<user>>',process.env.DBUSER).replace('<<password>>',process.env.DBPASS);
-
-mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true });
-
-const connection = mongoose.connection;
-
-connection.once("open", function() {
-  console.log("MongoDB database connection established successfully");
-});
-
-
-process.on('uncaughtException', function(err) {
-  
-    // Handle the error safely
-    console.log(`Terminating Process: Error
-    ${err}
-    `);
-    process.exit();
-})
+const server = app.listen(
+    port, 
+    console.log(`Server listening on port: ${port}. 
+On ${process.env.NODE_ENV}`
+    ));
