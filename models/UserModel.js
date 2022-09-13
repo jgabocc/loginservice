@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const schema = new mongoose.Schema({
-    googleId:{
-        type: String,
-        required: [true, 'Google Id its mandatory.']
-    },
-
     name: {
         type: String,
         required: [true, 'User`s name it`s a mandatory field.']
@@ -18,6 +14,7 @@ const schema = new mongoose.Schema({
 
     picture : {
         type: String,
+        default: 'profile.png'
     },
 
     authorized : {
@@ -32,7 +29,29 @@ const schema = new mongoose.Schema({
 
     email: {
         type: String,
+        required: [true, 'User`s email it`s a mandatory field.']
+    },
+
+    password: {
+        type: String,
+        required: [true, 'Password it`s a mandatory field.']
+    },
+
+    confirmPassword: {
+        type: String,
+        required: [true, 'Password it`s a mandatory field.']
     }
+})
+
+schema.pre('save',  function (next){
+        this.password = bcrypt.hashSync(this.password, 10, (err, hash) =>{
+         if(err) throw (err);
+ 
+         return hash;
+        });
+
+        this.confirmPassword = '';
+    next();
 })
 
 module.exports = mongoose.model('User', schema)
