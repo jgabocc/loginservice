@@ -13,5 +13,11 @@ exports.home = (req,res,next)=>{
 
 exports.login = (req,res,next)=>{
     if(req.user) res.redirect('/');
-    res.render('login',{title:`Login | Pleas Log In`, csslink: "cssLoginPage"});
+    res.render('login',{title:`Login | Please Log In`, csslink: "cssLoginPage"});
+}
+
+
+exports.register = (req,res,next)=>{
+    if(req.user) res.redirect('/');
+    res.render('register',{title:`Register`, csslink: "cssLoginPage"});
 }
