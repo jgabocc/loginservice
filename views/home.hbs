@@ -19,7 +19,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a href="#pablo" class="profile-photo nav-link">
+                        <a href="/profile" class="profile-photo nav-link">
                             <div class="profile-photo-small">
                                 <img src="{{user.picture}}" alt="Circle Image" class="rounded-circle img-fluid">
                             </div>
@@ -34,13 +34,19 @@
 
 
     {{#if user.authorized}}
-      <p>  User Is AUTHORIZED </p>
+    <div class="container">
+      <h3>Autorized</h3>
+      {{#if user.isadmin}}
+      <a href="/users" class="dataLinks">Manage Users</a>
+      <a href="/users" class="dataLinks">Manage Experiences</a>
+      <a href="/users" class="dataLinks">Manage WorkPlaces</a>
+      <a href="/users" class="dataLinks">Manage Technologies Used</a>
+    </div>
+      
+      {{/if}}
     {{else}}
       <p>You are not yet authorized.</p>
     {{/if}}
-
-
-  
 
 {{else}}
 
