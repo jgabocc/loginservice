@@ -40,6 +40,12 @@ const schema = new mongoose.Schema({
     confirmPassword: {
         type: String,
         required: [true, 'Password it`s a mandatory field.']
+    },
+
+    role: {
+        type: String,
+        enum : ['user','admin'],
+        default: 'user'
     }
 })
 

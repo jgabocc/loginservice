@@ -39,7 +39,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Express Handlebars setup and set main as a default layout
-app.engine('.hbs', exphbs.engine({extname: '.hbs', defaultLayout:'main'}));
+app.engine('.hbs', exphbs.engine(
+    {
+        extname: '.hbs',
+        defaultLayout:'main',
+        runtimeOptions: {
+            allowProtoPropertiesByDefault: true,
+            allowProtoMethodsByDefault: true,
+        }, 
+    }
+    ));
+    
 app.set('view engine', '.hbs');
 app.set('views', './views');
 

@@ -1,0 +1,46 @@
+      {{#if user.isadmin}}
+        you are Admin.
+
+      <h4>Users Registered</h4>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Lastname</th>
+                      <th scope="col">Created at</th>
+                      <th scope="col">email</th>
+                      <th scope="col">Is Active</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each user.users}}
+                      <tr>
+                        <th scope="row"> {{name}} </th>
+                        <td>{{this.lastname}}</td>
+                        <td>{{this.date}}</td>
+                        <td>{{this.email}}</td>
+                        <td>
+                          {{#if authorized}}
+                            <i class="fa-solid fa-check authorized"></i> 
+                          {{else}}
+                            <i class="fa-solid fa-xmark unauthorized"></i>
+                          {{/if}}
+                          </td>
+                          <td>
+                              <button class="btn-primary cta"> <i class="fa-solid fa-check"></i> </button>
+                              <button class="btn-success cta" > <i class="fa-solid fa-xmark"></i> </button>
+                              <button class="btn-danger cta" > <i class="fa-solid fa-trash"></i></button>
+                          </td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      {{/if}}
