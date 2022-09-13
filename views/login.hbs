@@ -5,12 +5,27 @@
           <div class="card-body p-5 text-center">
 
             <h3 class="mb-5">Sign in to My PortFolio</h3>
+              <p style="color:red">
+            {{#if messages.error}}
+                {{messages.error}}
+            {{/if}}
+              </p>
 
-            
             <hr class="my-4">
+<div class="container">
+        <div class="card card-container">
 
-            <a href="/auth/google" class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
-              type="submit"><i class="fab fa-google me-2"></i> Sign in with google</a>
+            <form class="form-signin" method="POST" action="/login">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value="sign in">
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
           </div>
         </div>
       </div>

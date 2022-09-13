@@ -3,7 +3,6 @@ const dotenv = require('dotenv')
 
 dotenv.config({path: './config/config.env'})
 
-require('./config/db').dbConnect();
 
 const port = process.env.PORT || 3000;
 
