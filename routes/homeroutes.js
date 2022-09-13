@@ -2,6 +2,8 @@ const router = require('express').Router();
 const passport = require('passport');
 const { ensureAuth, ensureGuest } = require('./../middleware/auth') 
 const homeController = require('./../controller/homeController')
+const authController = require('./../controller/authController')
+
 
 //@Route "/"
 //@Type GET Home Page
@@ -26,5 +28,7 @@ router.post('/login', ensureGuest, passport.authenticate('local', {
 //@Route "/register"
 //@Type GET 
 router.get('/register', ensureGuest, homeController.register)
+
+router.post('/register', ensureGuest, authController.PostRegister)
 
 module.exports = router;

@@ -19,15 +19,23 @@ exports.PostRegister = async (req,res,next)=>{
             }
 
         if(user.password !== user.confirmPassword) {
-            res.status(401).json({
-                    status:'success',
-                    message: 'passwords do not match.',
-                })
+            if(req.url === '/register'){
+                res.render('register',{title:`Register`, csslink: "cssLoginPage", message:{error:'passwords do not match'}});   
+            }else{
+                res.status(401).json({
+                        status:'success',
+                        message: 'passwords do not match.',
+                    })
+            }
         } else if(user.password === '' ) {
+            if(req.url === '/register'){
+                res.render('register',{title:`Register`, csslink: "cssLoginPage", message:{error:'password is empty'}});   
+            }else{
                 res.status(401).json({
                     status:'success',
                     message: 'passwords is empty.',
                 })
+            }
         } else {
                 let doc = await User.create(user);
                 doc.password = undefined;

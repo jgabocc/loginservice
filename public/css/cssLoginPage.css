@@ -282,3 +282,35 @@ a {
   font-family: roboto;
   text-align: center;
 }
+div#back{
+  align-items:center;
+  display:flex;
+}
+#goback{
+  border:none;
+  background-color:rgb(66, 133, 244);
+  color:white;
+  font-size:13px;
+  padding:5px 10px;
+  text-transform:capitalize;
+  cursor:pointer;
+  transform:all 0.3s;
+  position:relative;
+  border-radius: 15px 0px 10px 0px;
+}
+
+#goback:hover:after{
+  width:104%;
+  height:110%;
+}
+#goback:after{
+  content:"";
+  position :absolute;
+  width:24px;
+  height:24px;
+  bottom:-5px;
+    right:-5px;
+  border-bottom:2px solid tomato;
+  border-right:2px solid tomato;
+  transition:all 0.30s;
+}
