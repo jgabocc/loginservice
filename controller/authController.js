@@ -3,7 +3,7 @@ const User = require('../models/UserModel');
 exports.PostRegister = async (req,res,next)=>{
     try{
 
-        let user = await User.findOne({emal: req.body.email});
+        let user = await User.findOne({email: req.body.email});
         if (user) {
             res.status(200).json({
                 status:'failed',
@@ -18,13 +18,33 @@ exports.PostRegister = async (req,res,next)=>{
                 confirmPassword: req.body.confirmPassword,
             }
 
-            let doc = await User.create(user);
+        if(user.password !== user.confirmPassword) {
+            res.status(401).json({
+                    status:'success',
+                    message: 'passwords do not match.',
+                })
+        } else if(user.password === '' ) {
+                res.status(401).json({
+                    status:'success',
+                    message: 'passwords is empty.',
+                })
+        } else {
+                let doc = await User.create(user);
+                doc.password = undefined;
+                doc.confirmPassword = undefined;
+                doc.__v = undefined;
+                if(req.url === '/register'){
+                    res.redirect('/login');    
+                }else{
+                    res.status(201).json({
+                        status:'success',
+                        message: 'User created.',
+                        data: doc,
+                    });
+                }
+            }
 
-            res.status(201).json({
-                status:'success',
-                message: 'User created.',
-                data: doc,
-            });
+
 
         }
     } catch(ex){
