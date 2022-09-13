@@ -310,7 +310,7 @@ div#back{
   height:24px;
   bottom:-5px;
     right:-5px;
-  border-bottom:2px solid tomato;
-  border-right:2px solid tomato;
+  border-bottom:2px solid #56baed;
+  border-right:2px solid #56baed;
   transition:all 0.30s;
 }
