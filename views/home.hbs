@@ -1,33 +1,38 @@
 
 {{#if user}}
-  <nav class="navbar navbar-inverse navbar-expand-lg bg-dark" role="navigation-demo">
-        <div class="container">
-            <div class="navbar-translate">
-                <a class="navbar-brand">Hi {{user.name}} {{user.lastname}}</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="/auth/logout" class="nav-link">
-                            logout
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a href="/profile" class="profile-photo nav-link">
-                            <div class="profile-photo-small">
-                                <img src="{{user.picture}}" alt="Circle Image" class="rounded-circle img-fluid">
-                            </div>
-                        <div class="ripple-container"></div></a>
-                       
-                    </li>
-                </ul>
-            </div>
+
+<nav class="navbar navbar-expand-custom navbar-mainbg">
+        <a class="navbar-brand navbar-logo" href="#" style="color:rgba(255,255,255,0.5);">Hi {{user.name}} {{user.lastname}}</a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fa-solid fa-house"></i>Home</a>
+                </li>
+                {{#if user.isadmin}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fa-solid fa-users"></i>Manage Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fa-sharp fa-solid fa-city"></i>Manage Workplaces</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fa-solid fa-book"></i>Manage Experiences</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fa-solid fa-gears"></i>Manage skills</a>
+                </li>
+                {{/if}}
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"> <i class="fa-regular fa-user"></i>profile</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout"><i class="fa-sharp fa-solid fa-right-from-bracket"></i>Logout</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -36,14 +41,6 @@
     {{#if user.authorized}}
     <div class="container">
       <h3>Autorized</h3>
-      {{#if user.isadmin}}
-      <a href="/users" class="dataLinks">Manage Users</a>
-      <a href="/users" class="dataLinks">Manage Experiences</a>
-      <a href="/users" class="dataLinks">Manage WorkPlaces</a>
-      <a href="/users" class="dataLinks">Manage Technologies Used</a>
-    </div>
-      
-      {{/if}}
     {{else}}
       <p>You are not yet authorized.</p>
     {{/if}}
